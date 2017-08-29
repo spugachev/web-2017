@@ -4,66 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevFest</title>
+    <title>DevFest: Web Standards 2017</title>
     <link rel="manifest" href="manifest.json">    
     <style>
       body,
       html{
-          overflow: hidden;
           margin: 0;
           padding: 0;
           background-color: black;
+          overflow: hidden;
       }
 
-      body, #canvas {width:100%; height:100%; margin:0px;}
+      body, #canvas {
+        width:100%; 
+        height:100%; 
+        margin:0px;
+      }
     </style>
   </head>
   <body>
     <canvas id="canvas" 
-    oncontextmenu="event.preventDefault()"></canvas>
+    oncontextmenu="event.preventDefault()">
+    </canvas>
 
     <script type='text/javascript'>
       var Module = {
-        preRun: [],
-        postRun: [],
-        print: (function() {
-          return function(text) {
-            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-            console.log(text);
-          };
-        })(),
-        printErr: function(text) {
-          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-          if (0) { // XXX disabled for safety typeof dump == 'function') {
-            dump(text + '\n'); // fast, straight to the real console
-          } else {
-            console.error(text);
-          }
-        },
         canvas: (() => {
-          var canvas = document.getElementById('canvas');
-          canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+          const canvas = document.getElementById('canvas');
+          canvas.addEventListener("webglcontextlost", (e) => { 
+            alert('WebGL context lost. You will need to reload the page.'); 
+            e.preventDefault(); 
+          }, false);
           return canvas;
         })(),
-        setStatus: function(text) {},
-        totalDependencies: 0,
-        monitorRunDependencies: function(left) {
-          this.totalDependencies = Math.max(this.totalDependencies, left);
-          Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+        setStatus: (status) => { 
+          console.log(status); 
         }
       };
     </script>
     <script>
-        (async function(){
-          if ('serviceWorker' in navigator) {
-            try{
-              const reg = await navigator.serviceWorker.register('/sw.js');
-              console.log('Service Worker has been registered!');
-            }catch(err){
-              console.log('Service worker registration failed:', err);
-            }
-          }
-        })();
+    (async function(){
+      if ('serviceWorker' in navigator) {
+        try{
+          const reg = await navigator.serviceWorker.register('/sw.js');
+          console.log('Service Worker has been registered!');
+        }catch(err){
+          console.log('Service worker registration failed:', err);
+        }
+      }
+    })();
     </script>    
     <script async type="text/javascript" src="webassembly.js"></script>
   </body>
