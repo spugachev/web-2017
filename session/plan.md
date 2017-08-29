@@ -1,6 +1,6 @@
 # Web Assembly
 
-### Open WebAssembly Explorer
+### WebAssembly Explorer
 
 ```c
 unsigned int half(unsigned int num){
@@ -22,8 +22,11 @@ int calc(int x){
 $ xxd app.wasm
 ```
 
+### index.html
+
 ```bash
-serve //npm install -g serve
+$ npm install -g serve
+$ serve 
 ```
 
 ### ECMAScript 2017
