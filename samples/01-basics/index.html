@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+        (function(){
+            function loadWasm(fileName){
+                return fetch('/' + fileName + '.wasm').
+                then(function (res) {
+                    return res.arrayBuffer();
+                }).then(function(bytes) {
+                    return WebAssembly.compile(bytes);
+                }).then(function(module) {
+                    return WebAssembly.instantiate(module);
+                });		
+		    }
+        
+		    loadWasm('app').then(function(instance){
+                window.half = instance.exports.half;	
+                console.log('half:', half(123456));	
+            });	             
+        })();
+ 
+	</script>
+</head>
+<body>
+
+</body>
+</html>
