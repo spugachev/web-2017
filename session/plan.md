@@ -30,3 +30,8 @@ $ serve
 ```
 
 ### ECMAScript 2017
+### Fibbonachi
+### Spinning Cube
+source ~/dev/emsdk-portable/emsdk_env.sh
+make native
+make wasm
