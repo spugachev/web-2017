@@ -36,4 +36,5 @@ source ~/dev/emsdk-portable/emsdk_env.sh
 make native
 make wasm
 
-enable-improved-a2hs
+chrome://flags#enable-improved-a2hs
+https://devfest-e762d.firebaseapp.com

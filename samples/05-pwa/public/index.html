@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
     <title>DevFest: Web Standards 2017</title>
-    <link rel="manifest" href="manifest.json">    
+    <link rel="icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json"> 
     <style>
       body,
       html{
@@ -41,19 +42,19 @@
           console.log(status); 
         }
       };
-    </script>
-    <script>
-    (async function(){
-      if ('serviceWorker' in navigator) {
-        try{
-          const reg = await navigator.serviceWorker.register('/sw.js');
-          console.log('Service Worker has been registered!');
-        }catch(err){
-          console.log('Service worker registration failed:', err);
-        }
-      }
-    })();
-    </script>    
+    </script>   
     <script async type="text/javascript" src="webassembly.js"></script>
+    <script>
+        (async function(){
+          if ('serviceWorker' in navigator) {
+            try{
+              const reg = await navigator.serviceWorker.register('/service-worker.js');
+              console.log('Service Worker has been registered!');
+            }catch(err){
+              console.log('Service worker registration failed:', err);
+            }
+          }
+        })();
+    </script> 
   </body>
 </html>
