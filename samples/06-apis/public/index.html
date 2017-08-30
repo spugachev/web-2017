@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+    <title>DevFest: Web Standards 2017</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json"> 
+    <style>
+      body,
+      html{
+          margin: 0;
+          padding: 0;
+          background-color: black;
+          overflow: hidden;
+      }
+
+      body, #canvas {
+        width:100%; 
+        height:100%; 
+        margin:0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" 
+    oncontextmenu="event.preventDefault()">
+    </canvas>
+
+    <script type='text/javascript'>
+      var Module = {
+        canvas: (() => {
+          const canvas = document.getElementById('canvas');
+          canvas.addEventListener("webglcontextlost", (e) => { 
+            alert('WebGL context lost. You will need to reload the page.'); 
+            e.preventDefault(); 
+          }, false);
+          return canvas;
+        })(),
+        setStatus: (status) => { 
+          console.log(status); 
+        }
+      };
+    </script>   
+    <script async type="text/javascript" src="webassembly.js"></script>
+    <script>
+        (async function(){
+          if ('serviceWorker' in navigator) {
+            try{
+              const reg = await navigator.serviceWorker.register('/service-worker.js');
+              console.log('Service Worker has been registered!');
+            }catch(err){
+              console.log('Service worker registration failed:', err);
+            }
+          }
+        })();
+    </script> 
+    <script>
+    if (navigator.credentials && navigator.credentials.preventSilentAccess) {
+      navigator.credentials.get({
+        password: true,
+        mediation: 'optional'
+      }).then(cred => {
+        if(!cred){
+          cred = new PasswordCredential({
+          id:       'spugachev@gmail.com',
+          name:     'Sergey Pugachev',
+          password: 'Hello!',
+          iconURL:  'https://lh3.googleusercontent.com/-KFIgYAXzcl8/AAAAAAAAAAI/AAAAAAAAAAA/APJypA1dbRV9tq9gGjj8-2Wh65JIEeV-Dg/mo/photo.jpg?sz=64'
+          });
+
+          navigator.credentials.store(cred);
+        }
+
+        console.log(cred);
+      });    
+    }
+    </script>
+  </body>
+</html>
