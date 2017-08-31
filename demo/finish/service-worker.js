@@ -12,6 +12,7 @@ self.addEventListener('install', function(event) {
 			return cache.addAll([
 				'/',
 				'/favicon.ico',
+				'/site.css',
 				'/webassembly.js',
 				'/webassembly.wasm'
 			]); 
