@@ -1,6 +1,6 @@
 (async function(){
 	async function loadWasm(fileName){
-		const res = await fetch(`/wasm/{fileName}.wasm`);
+		const res = await fetch(`/wasm/${fileName}.wasm`);
 		const bytes = await res.arrayBuffer();
         const module = await WebAssembly.compile(bytes);
         
@@ -28,7 +28,7 @@
     const {instance, memory} = await loadWasm('fib');	  
     
     const offset = instance.exports._fib();		
-    const arr = new Uint32Array(memory.buffer, offset, 10);
+    const arr = new Uint32Array(memory.buffer, offset, 100);
     console.dir(arr);
 
     let i = 0;

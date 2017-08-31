@@ -1,8 +1,6 @@
 const lnkCandle = document.getElementById('lnkCandle');
 lnkCandle.addEventListener('click', manageCandle);
 
-let encoder = new TextEncoder('utf-8');
-let decoder = new TextDecoder('utf-8');
 const CANDLE_SERVICE_UUID = 0xFF02;
 const CANDLE_DEVICE_NAME_UUID = 0xFFFF;
 const CANDLE_COLOR_UUID = 0xFFFC;

@@ -4,5 +4,5 @@ import { WasmHelper } from './asm-utils.js';
     const helper = new WasmHelper();
     const {instance, module}  = await helper.loadWasm('calc');   
     window.half = instance.exports.half;              
-    console.log('half:', half(123456));     
+    console.log('half es2017:', half(123456));     
 })();

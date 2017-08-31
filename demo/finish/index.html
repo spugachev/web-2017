@@ -7,14 +7,13 @@
     <title>DevFest: Web Standards 2017</title>
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="site.css">
-    <!--<link rel="manifest" href="manifest.json"> -->
+    <link rel="manifest" href="manifest.json">
   </head>
   <body>
     <!--<script src="asm-es3.js"></script>-->
-    <!--<script src="asm-es2017.js"></script>-->    
+    <!--<script src="asm-es2017.js" type="module"></script>-->    
     <!--<script src="asm-fib.js"></script>-->
 
-    <!--
     <canvas id="canvas" 
     oncontextmenu="event.preventDefault()">
     </canvas>
@@ -34,15 +33,16 @@
         }
       };
     </script> 
-    -->
 
-    <!--<div id="divLinks">
+    <script async type="text/javascript" src="webassembly.js"></script>
+
+    <div id="divLinks">
       <a href="#" id="lnkUser">Add User</a><br/>
       <a href="#" id="lnkSubscribe">Subscribe</a><br/>
       <a href="#" id="lnkCandle">Candle</a>
-    </div>-->
+    </div>
  
-    <!--<script>
+    <script>
         (async function(){
           if ('serviceWorker' in navigator) {
             try{
@@ -53,10 +53,9 @@
             }
           }
         })();
-    </script> -->
-    <!--<script async type="text/javascript" src="webassembly.js"></script>-->
-    <!--<script src="scripts/users.js"></script>-->
-    <!--<script src="scripts/payment.js"></script>-->
-    <!--<script src="scripts/candle.js"></script>-->
+    </script>
+    <script src="scripts/users.js"></script>
+    <script src="scripts/payment.js"></script>
+    <script src="scripts/candle.js"></script>
   </body>
 </html>

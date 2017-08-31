@@ -1,4 +1,4 @@
-export class WashHelper {
+export class WasmHelper {
     async loadWasm(fileName){
         const res = await fetch(`/wasm/${fileName}.wasm`);
         const bytes = await res.arrayBuffer();

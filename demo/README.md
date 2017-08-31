@@ -43,13 +43,25 @@ $ serve
 Async/Await, Classes, Template Literals, Destructuring etc.
 
 ## 3. Fibbonachi
-## 4. Spinning Cube
 
 ```bash
 source ~/dev/emsdk-portable/emsdk_env.sh
+```
+[First 300 fib](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibtable.html)
+
+## 4. Spinning Cube
+
+```bash
 make native
 make wasm
 ```
-## 5. Progressive Web Apps
+
+## 5. Run on Android
+
+## 6. Progressive Web Apps
 * [chrome://flags#enable-improved-a2hs](chrome://flags#enable-improved-a2hs)
 * [https://devfest-e762d.firebaseapp.com](https://devfest-e762d.firebaseapp.com)
+
+## 7. Users
+## 8. Payment
+## 9. Candle
