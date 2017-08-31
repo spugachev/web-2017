@@ -21,12 +21,23 @@
         height:100%; 
         margin:0px;
       }
+
+      a {
+        color: white;
+        font-size: 20pt;
+      }
     </style>
   </head>
   <body>
     <canvas id="canvas" 
     oncontextmenu="event.preventDefault()">
     </canvas>
+
+    <div style="text-align:center;">
+      <a href="#" id="lnkUser">Add User</a><br/>
+      <a href="#" id="lnkSubscribe">Subscribe</a><br/>
+      <a href="#" id="lnkCandle">Candle</a>
+    </div>
 
     <script type='text/javascript'>
       var Module = {
@@ -56,123 +67,8 @@
           }
         })();
     </script> 
-    <script>
-    if (navigator.credentials && navigator.credentials.preventSilentAccess) {
-      navigator.credentials.get({
-        password: true,
-        mediation: 'optional'
-      }).then(cred => {
-        if(!cred){
-          cred = new PasswordCredential({
-          id:       'spugachev@gmail.com',
-          name:     'Sergey Pugachev',
-          password: 'Hello!',
-          iconURL:  'https://lh3.googleusercontent.com/-KFIgYAXzcl8/AAAAAAAAAAI/AAAAAAAAAAA/APJypA1dbRV9tq9gGjj8-2Wh65JIEeV-Dg/mo/photo.jpg?sz=64'
-          });
-
-          navigator.credentials.store(cred);
-        }
-
-        console.log(cred);
-      }).catch((err) => {
-        console.log(err);
-      });    
-    }
-    </script>
-    <script>
-      return;
-      const canvas = document.getElementById('canvas');
-      canvas.addEventListener('touchend', doPayment);
-      canvas.addEventListener('click', doPayment);
-
-      async function doPayment(){
-        const creditCardPaymentMethod = {  
-          supportedMethods: ['basic-card'],  
-          data: {  
-            supportedNetworks: ['visa', 'mastercard', 'amex'],  
-            supportedTypes: ['credit', 'debit'],  
-          },  
-        };
-
-        const paymentDetails = {  
-          total: {  
-            label: '1-year Pro Subscription',  
-            amount: {  
-              currency: 'RUB',  
-              value: '1999',  
-            },  
-          }, 
-          displayItems: [  
-          {  
-            label: 'Subtotal',  
-            amount: {  
-              currency: 'RUB',  
-              value: '4999',  
-            },  
-          }, {  
-            label: 'Discount',  
-            amount: {  
-              currency: 'RUB',  
-              value: '-3000',  
-            },  
-          } 
-          ] 
-        };
-
-        let request = new PaymentRequest([creditCardPaymentMethod], paymentDetails, { 
-          requestShipping: false, 
-          requestPayerEmail: true, 
-          requestPayerPhone: true 
-        });
-
-        try{
-          const res = await request.show();
-          console.log(res);
-        }catch(err){
-          console.log(err);
-        }
-      }
-    </script>
-    <script>
-      const canvas = document.getElementById('canvas');
-      canvas.addEventListener('touchend', manageCandle);
-      canvas.addEventListener('click', manageCandle);
-
-      let encoder = new TextEncoder('utf-8');
-      let decoder = new TextDecoder('utf-8');
-      const CANDLE_SERVICE_UUID = 0xFF02;
-      const CANDLE_DEVICE_NAME_UUID = 0xFFFF;
-      const CANDLE_COLOR_UUID = 0xFFFC;
-      const CANDLE_EFFECT_UUID = 0xFFFB;
-      const CANDLE_BLOW_NOTIFICATIONS_UUID = 0x2A37;
-
-      async function manageCandle(){
-        let options = {filters:[{services:[ CANDLE_SERVICE_UUID ]}],
-                     optionalServices: ['battery_service']};
-
-        const device = await navigator.bluetooth.requestDevice(options);
-        const server = await device.gatt.connect();
-        const service = await server.getPrimaryService(CANDLE_SERVICE_UUID);
-        const effectChar = await service.getCharacteristic(CANDLE_EFFECT_UUID);
-        const colorChar = await service.getCharacteristic(CANDLE_COLOR_UUID);
-
-        console.log(device);
-
-        let r = 254;
-        let g = 0;
-        let b = 0;
-
-        setInterval(async ()=>{
-          let data = [0x00, r, g, b, 0x05, 0x00, 0x01, 0x00];
-          await effectChar.writeValue(new Uint8Array(data));
-
-          data = [0x00, r, g, b];
-          await colorChar.writeValue(new Uint8Array(data));
-
-          r -= 5;
-          g += 5;
-        }, 100)
-      }
-    </script>
+    <script src="scripts/users.js"></script>
+    <script src="scripts/payment.js"></script>
+    <script src="scripts/candle.js"></script>
   </body>
 </html>
