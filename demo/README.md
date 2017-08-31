@@ -10,8 +10,8 @@
 # Demo
 
 ## 1. WebAssembly Explorer
-* Address: [https://mbebenita.github.io/WasmExplorer/]() 
-* Saved: [https://goo.gl/KAVoaV]()
+* Address: [https://mbebenita.github.io/WasmExplorer/](https://mbebenita.github.io/WasmExplorer/) 
+* Saved: [https://goo.gl/KAVoaV](https://goo.gl/KAVoaV)
 
 ### calc.c
 ```c
@@ -51,5 +51,5 @@ make native
 make wasm
 ```
 ## 5. Progressive Web Apps
-* [chrome://flags#enable-improved-a2hs]()
-* [https://devfest-e762d.firebaseapp.com]()
+* [chrome://flags#enable-improved-a2hs](chrome://flags#enable-improved-a2hs)
+* [https://devfest-e762d.firebaseapp.com](https://devfest-e762d.firebaseapp.com)
