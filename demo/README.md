@@ -56,3 +56,7 @@ make wasm
 ## 7. Users
 ## 8. Payment
 ## 9. Candle
+
+```bash
+docker run --rm -it -v $(pwd):/data spugachev/wasm make wasm
+```
