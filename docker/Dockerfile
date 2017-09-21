@@ -1,7 +1,12 @@
+# docker run --rm -it -v $(pwd):/data spugachev/wasm
 FROM ubuntu:17.04	
 
 LABEL maintainer="spugachev@gmail.com"
 USER root
+
+ENV APP_DIR /data
+RUN mkdir $APP_DIR 
+
 # *********************************************
 # Core
 # *********************************************
@@ -10,8 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         software-properties-common \
         apt-utils \
         locales \
-		curl \
-		wget \
+        curl \
+        wget \
         rsync \
         htop \
 	&& rm -rf /var/lib/apt/lists/*
@@ -41,12 +46,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tree \
         jq \
         nano \
+        tmux \
 	&& rm -rf /var/lib/apt/lists/*   
     
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		git \
 		openssh-client \
 	&& rm -rf /var/lib/apt/lists/*   
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		default-jdk \
+	&& rm -rf /var/lib/apt/lists/*  
             
 RUN set -ex; \
 	apt-get update; \
@@ -197,4 +207,5 @@ RUN mkdir emscripten && mkdir llvm && \
     echo 'int main() {}' > tmp.c && \
     emcc tmp.c && emcc -s WASM=1 tmp.c && rm tmp.c
 
+WORKDIR $APP_DIR
 CMD ["/bin/zsh"]
