@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+    function doWork(){
+        let instance = new Module.MyClass(10, "hello");
+        instance.incrementX();
+        instance.incrementX();
+
+        console.log('x:', instance.x);
+
+        instance.x = 20;
+
+        console.log('x:', instance.x);
+
+        let str = Module.MyClass.getStringFromInstance(instance); 
+        console.log('str:', str);
+        instance.delete();
+    }
+
+    Module = {
+        wasmBinaryFile: "main.wasm",
+        onRuntimeInitialized: () => {
+            doWork();
+        }
+    };
+    </script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>Hello C++</h1>
+</body>
+</html>
