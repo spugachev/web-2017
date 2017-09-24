@@ -1,5 +1,9 @@
 # Labs
 
+- [WASM](https://docs.google.com/document/d/1T-Adc5_LENCt6WJyOlcC9gaQQTBQWU-qcF7IswzcIKo/edit#heading=h.64xthi5kx6rb)
+- [Promises](https://docs.google.com/document/d/1AA9x27wZvAvJmAS2m_DH3EJ-TBekhfDiIjfWx6nUKBA/edit#heading=h.6cirb7n89klg)
+
+# Codelabs
 - [An Introduction to Web Assembly](https://codelabs.developers.google.com/codelabs/web-assembly-intro/)
 - [Your First Progressive Web App](https://codelabs.developers.google.com/codelabs/your-first-pwapp/)
 - [Debuggin Service Workers](https://codelabs.developers.google.com/codelabs/debugging-service-workers/)
